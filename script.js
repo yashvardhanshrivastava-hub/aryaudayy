@@ -7,7 +7,9 @@
   const volunteerForm = document.getElementById('volunteerForm');
   const contactForm = document.getElementById('contactForm');
 
-  // Sticky header: add class on scroll
+  /* ---------------------------
+     Sticky Header
+  ----------------------------*/
   function onScroll() {
     if (window.scrollY > 50) {
       header.classList.add('scrolled');
@@ -15,19 +17,20 @@
       header.classList.remove('scrolled');
     }
   }
-
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  // Mobile menu toggle
+  /* ---------------------------
+     Mobile Menu
+  ----------------------------*/
   if (navToggle && navMenu) {
     navToggle.addEventListener('click', function () {
       navToggle.classList.toggle('active');
       navMenu.classList.toggle('open');
-      document.body.style.overflow = navMenu.classList.contains('open') ? 'hidden' : '';
+      document.body.style.overflow =
+        navMenu.classList.contains('open') ? 'hidden' : '';
     });
 
-    // Close menu when clicking a link (anchor)
     navMenu.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', function () {
         navToggle.classList.remove('active');
@@ -37,79 +40,96 @@
     });
   }
 
-  // Volunteer form submit
+  /* ---------------------------
+     VOLUNTEER FORM (CONNECTED TO BACKEND)
+  ----------------------------*/
   if (volunteerForm) {
-    volunteerForm.addEventListener('submit', function (e) {
+    volunteerForm.addEventListener('submit', async function (e) {
       e.preventDefault();
-      // Placeholder: in production, send to server
-      alert('Thank you for your interest! We will get in touch soon.');
-      volunteerForm.reset();
+
+      const name = document.getElementById('vname').value;
+      const email = document.getElementById('vemail').value;
+      const phone = document.getElementById('vphone').value;
+      const skill = document.getElementById('vskill').value;
+      const message = document.getElementById('vmessage').value;
+
+      try {
+        const response = await fetch("http://localhost:5000/api/user", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            phone,
+            skill,
+            message
+          })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          alert("Registration Successful!");
+          volunteerForm.reset();
+        } else {
+          alert(data.error || "Registration failed.");
+        }
+
+      } catch (error) {
+        console.error("Error:", error);
+        alert("Server connection failed.");
+      }
     });
   }
 
-  // Contact form submit
+  /* ---------------------------
+     CONTACT FORM (OPTIONAL BACKEND)
+  ----------------------------*/
   if (contactForm) {
-    contactForm.addEventListener('submit', function (e) {
+    contactForm.addEventListener('submit', async function (e) {
       e.preventDefault();
-      alert('Thank you for your message. We will respond shortly.');
-      contactForm.reset();
+
+      const name = document.getElementById('cname').value;
+      const email = document.getElementById('cemail').value;
+      const subject = document.getElementById('csubject').value;
+      const message = document.getElementById('cmessage').value;
+
+      try {
+        const response = await fetch("http://localhost:5000/api/user", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            subject,
+            message
+          })
+        });
+
+        if (response.ok) {
+          alert("Message Sent Successfully!");
+          contactForm.reset();
+        } else {
+          alert("Message failed to send.");
+        }
+
+      } catch (error) {
+        console.error(error);
+        alert("Server connection failed.");
+      }
     });
   }
 
-  // Footer year
+  /* ---------------------------
+     Footer Year
+  ----------------------------*/
   var yearEl = document.getElementById('year');
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
   }
 
-  // Animate stat numbers (33% and 15%) when PRANV stats come into view
-  function animateValue(el, start, end, duration) {
-    var startTime = null;
-    function step(timestamp) {
-      if (!startTime) startTime = timestamp;
-      var progress = Math.min((timestamp - startTime) / duration, 1);
-      var easeOut = 1 - Math.pow(1 - progress, 2);
-      el.textContent = Math.floor(easeOut * (end - start) + start);
-      if (progress < 1) {
-        window.requestAnimationFrame(step);
-      } else {
-        el.textContent = end;
-      }
-    }
-    window.requestAnimationFrame(step);
-  }
-
-  var statAnimateEls = document.querySelectorAll('.stat-animate');
-  if (statAnimateEls.length && 'IntersectionObserver' in window) {
-    var statObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        var el = entry.target;
-        var target = parseInt(el.getAttribute('data-target'), 10);
-        if (!isNaN(target) && !el.classList.contains('animated')) {
-          el.classList.add('animated');
-          animateValue(el, 0, target, 1200);
-        }
-      });
-    }, { threshold: 0.3, rootMargin: '0px' });
-    statAnimateEls.forEach(function (el) { statObserver.observe(el); });
-  } else if (statAnimateEls.length) {
-    statAnimateEls.forEach(function (el) {
-      var target = parseInt(el.getAttribute('data-target'), 10);
-      if (!isNaN(target)) el.textContent = target;
-    });
-  }
-
-  // Section reveal on scroll
-  var sections = document.querySelectorAll('.section');
-  if ('IntersectionObserver' in window) {
-    var sectionObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('reveal');
-        }
-      });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-    sections.forEach(function (s) { sectionObserver.observe(s); });
-  }
 })();
