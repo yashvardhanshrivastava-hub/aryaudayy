@@ -440,6 +440,42 @@
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+
+// Initialize Firestore
+const db = getFirestore(app);
+
+// Get the form
+const volunteerForm = document.getElementById("volunteerForm");
+
+volunteerForm.addEventListener("submit", async (e) => {
+  e.preventDefault(); // prevent default form submission
+
+  // Get form values
+  const name = document.getElementById("vname").value.trim();
+  const email = document.getElementById("vemail").value.trim();
+  const phone = document.getElementById("vphone").value.trim();
+  const skill = document.getElementById("vskill").value;
+  const message = document.getElementById("vmessage").value.trim();
+
+  try {
+    // Add document to Firestore
+    await addDoc(collection(db, "volunteers"), {
+      name,
+      email,
+      phone,
+      skill,
+      message,
+      timestamp: new Date()
+    });
+
+    alert("Thank you! Your registration has been submitted.");
+    volunteerForm.reset(); // Reset form after submission
+  } catch (error) {
+    console.error("Error adding document: ", error);
+    alert("Sorry! Something went wrong. Please try again later.");
+  }
+});
 </script>
 </body>
 </html>
