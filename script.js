@@ -4,9 +4,10 @@
   const header = document.getElementById('header');
   const navToggle = document.getElementById('navToggle');
   const navMenu = document.getElementById('navMenu');
+  const volunteerForm = document.getElementById('volunteerForm');
   const contactForm = document.getElementById('contactForm');
 
-  // Sticky header
+  // Sticky header: add class on scroll
   function onScroll() {
     if (window.scrollY > 50) {
       header.classList.add('scrolled');
@@ -14,6 +15,7 @@
       header.classList.remove('scrolled');
     }
   }
+
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
@@ -25,12 +27,23 @@
       document.body.style.overflow = navMenu.classList.contains('open') ? 'hidden' : '';
     });
 
+    // Close menu when clicking a link (anchor)
     navMenu.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', function () {
         navToggle.classList.remove('active');
         navMenu.classList.remove('open');
         document.body.style.overflow = '';
       });
+    });
+  }
+
+  // Volunteer form submit
+  if (volunteerForm) {
+    volunteerForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      // Placeholder: in production, send to server
+      alert('Thank you for your interest! We will get in touch soon.');
+      volunteerForm.reset();
     });
   }
 
@@ -44,54 +57,59 @@
   }
 
   // Footer year
-  const yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
+  var yearEl = document.getElementById('year');
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
 
-  // Animate stat numbers
+  // Animate stat numbers (33% and 15%) when PRANV stats come into view
   function animateValue(el, start, end, duration) {
-    let startTime = null;
+    var startTime = null;
     function step(timestamp) {
       if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / duration, 1);
-      const easeOut = 1 - Math.pow(1 - progress, 2);
+      var progress = Math.min((timestamp - startTime) / duration, 1);
+      var easeOut = 1 - Math.pow(1 - progress, 2);
       el.textContent = Math.floor(easeOut * (end - start) + start);
-      if (progress < 1) window.requestAnimationFrame(step);
-      else el.textContent = end;
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      } else {
+        el.textContent = end;
+      }
     }
     window.requestAnimationFrame(step);
   }
 
-  const statEls = document.querySelectorAll('.stat-animate');
-  if (statEls.length && 'IntersectionObserver' in window) {
-    const statObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
+  var statAnimateEls = document.querySelectorAll('.stat-animate');
+  if (statAnimateEls.length && 'IntersectionObserver' in window) {
+    var statObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
-        const el = entry.target;
-        const target = parseInt(el.getAttribute('data-target'), 10);
+        var el = entry.target;
+        var target = parseInt(el.getAttribute('data-target'), 10);
         if (!isNaN(target) && !el.classList.contains('animated')) {
           el.classList.add('animated');
           animateValue(el, 0, target, 1200);
         }
       });
     }, { threshold: 0.3, rootMargin: '0px' });
-
-    statEls.forEach((el) => statObserver.observe(el));
-  } else {
-    statEls.forEach((el) => {
-      const target = parseInt(el.getAttribute('data-target'), 10);
+    statAnimateEls.forEach(function (el) { statObserver.observe(el); });
+  } else if (statAnimateEls.length) {
+    statAnimateEls.forEach(function (el) {
+      var target = parseInt(el.getAttribute('data-target'), 10);
       if (!isNaN(target)) el.textContent = target;
     });
   }
 
-  // Section reveal
-  const sections = document.querySelectorAll('.section');
+  // Section reveal on scroll
+  var sections = document.querySelectorAll('.section');
   if ('IntersectionObserver' in window) {
-    const sectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) entry.target.classList.add('reveal');
+    var sectionObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal');
+        }
       });
     }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-
-    sections.forEach((s) => sectionObserver.observe(s));
+    sections.forEach(function (s) { sectionObserver.observe(s); });
   }
 })();
