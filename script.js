@@ -49,13 +49,7 @@
   /* ===============================
      Contact Form
   =============================== */
-  if (contactForm) {
-    contactForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      alert('Thank you for your message. We will respond shortly.');
-      contactForm.reset();
-    });
-  }
+ 
 
   /* ===============================
      Footer Year
