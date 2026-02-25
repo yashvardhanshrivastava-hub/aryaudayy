@@ -44,13 +44,7 @@
   /* ===============================
      Volunteer Form
   =============================== */
- if (volunteerForm) {
-    volunteerForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      alert('Thank you for your interest! We will get in touch soon.');
-      volunteerForm.reset();
-    });
-  }
+
 
   /* ===============================
      Contact Form
