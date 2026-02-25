@@ -1,111 +1,143 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARYA UDAY | Holistic Social Transformation</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <style>
-        .blue-gradient { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); }
-        .pnv-red { color: #ef4444; }
-        .hero-overlay { background: rgba(15, 23, 42, 0.7); }
-    </style>
-</head>
-<body class="bg-slate-50 font-sans text-slate-900" x-data="{ activeWing: 'core' }">
-
-    <nav class="sticky top-0 z-50 bg-white shadow-sm border-b border-blue-100 px-6 py-4 flex justify-between items-center">
-        <div class="flex flex-col">
-            <span class="text-2xl font-black text-blue-900 tracking-tighter uppercase leading-none">ARYA UDAY</span>
-            <span class="text-[10px] font-bold text-blue-500 tracking-[0.2em] uppercase">Holistic Transformation</span>
-        </div>
-        <div class="hidden lg:flex space-x-8 font-bold text-sm text-slate-600 uppercase">
-            <a href="#" class="hover:text-blue-700 transition">Mission</a>
-            <a href="#" class="hover:text-blue-700 transition">PNV Defense</a>
-            <a href="#" class="hover:text-blue-700 transition">Our Visionary</a>
-        </div>
-        <button class="bg-blue-700 text-white px-6 py-2 rounded font-bold hover:bg-blue-800 transition shadow-lg shadow-blue-200">JOIN THE MOVEMENT</button>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARYA UDAY | NGO</title>
+  <meta name="description" content="ARYA UDAY NGO dedicated to holistic social and ethical transformation." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    .glass { backdrop-filter: blur(12px); background: rgba(255,255,255,0.08); }
+    .gradient-blue { background: linear-gradient(135deg, #0b3c8c, #2563eb); }
+  </style></head><body class="bg-gray-50 text-gray-800 scroll-smooth"><!-- NAVBAR --><header class="fixed w-full z-50 bg-white/80 backdrop-blur shadow-sm">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-blue-700">ARYA UDAY</h1>
+    <nav class="hidden md:flex gap-6 font-medium">
+      <a href="#home" class="hover:text-blue-600">Home</a>
+      <a href="#about" class="hover:text-blue-600">About</a>
+      <a href="#wings" class="hover:text-blue-600">Wings</a>
+      <a href="#programs" class="hover:text-blue-600">Programs</a>
+      <a href="#donate" class="hover:text-blue-600">Donate</a>
+      <a href="#contact" class="hover:text-blue-600">Contact</a>
     </nav>
+    <button id="menuBtn" class="md:hidden text-2xl"><i class="fas fa-bars"></i></button>
+  </div>  <!-- Mobile Menu -->  <div id="mobileMenu" class="hidden md:hidden px-6 pb-4">
+    <a href="#home" class="block py-2">Home</a>
+    <a href="#about" class="block py-2">About</a>
+    <a href="#wings" class="block py-2">Wings</a>
+    <a href="#programs" class="block py-2">Programs</a>
+    <a href="#donate" class="block py-2">Donate</a>
+    <a href="#contact" class="block py-2">Contact</a>
+  </div>
+</header><!-- HERO --><section id="home" class="gradient-blue text-white pt-32 pb-24">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <h2 class="text-4xl md:text-6xl font-bold mb-6">ARYA UDAY — Transforming Society with Service and Strength</h2>
+    <p class="max-w-3xl mx-auto mb-8 text-lg opacity-90">A multifaceted NGO dedicated to holistic social and ethical transformation across education, women safety, elderly care and cultural service.</p>
+    <div class="flex flex-col sm:flex-row justify-center gap-4">
+      <a href="#donate" class="bg-white text-blue-700 px-8 py-3 rounded-full font-semibold hover:scale-105 transition">Donate Now</a>
+      <a href="#contact" class="border border-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-700 transition">Join Mission</a>
+    </div>
+  </div>
+</section><!-- ABOUT --><section id="about" class="py-20">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h3 class="text-3xl font-bold text-blue-700 mb-6">About ARYA UDAY</h3>
+    <p class="text-lg leading-relaxed">ARYA UDAY is a multifaceted NGO dedicated to holistic social and ethical transformation. The organization works across education, women safety, elderly care, cultural preservation and cow protection initiatives.</p><div class="grid md:grid-cols-3 gap-8 mt-12">
+  <div class="p-6 rounded-2xl shadow-lg bg-white">
+    <i class="fas fa-bullseye text-3xl text-blue-600 mb-3"></i>
+    <h4 class="font-semibold text-xl mb-2">Mission</h4>
+    <p>Empower society through education, protection and dedicated social service.</p>
+  </div>
+  <div class="p-6 rounded-2xl shadow-lg bg-white">
+    <i class="fas fa-eye text-3xl text-blue-600 mb-3"></i>
+    <h4 class="font-semibold text-xl mb-2">Vision</h4>
+    <p>To build a safe, educated and ethically strong Bharat.</p>
+  </div>
+  <div class="p-6 rounded-2xl shadow-lg bg-white">
+    <i class="fas fa-user text-3xl text-blue-600 mb-3"></i>
+    <h4 class="font-semibold text-xl mb-2">Founder</h4>
+    <p><strong>Yashvardhan Rai Shrivastav</strong><br/>Visionary Leader</p>
+  </div>
+</div>
 
-    <header class="relative h-[70vh] flex items-center justify-center text-center text-white overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80" class="absolute inset-0 w-full h-full object-cover" alt="NGO background">
-        <div class="absolute inset-0 hero-overlay"></div>
-        <div class="relative z-10 max-w-4xl px-6">
-            <h1 class="text-5xl md:text-7xl font-black mb-4 leading-tight">CHAMPIONING <span class="text-blue-400">ETHICAL CHANGE</span></h1>
-            <p class="text-xl md:text-2xl font-light mb-8 text-slate-200 italic">"Commanded by Yashvardhan Rai Shrivastav"</p>
-            <div class="flex flex-wrap gap-4 justify-center">
-                <button class="bg-blue-600 hover:bg-blue-500 px-10 py-4 rounded-full font-black text-lg transition shadow-xl">DONATE NOW</button>
-                <button class="border-2 border-white hover:bg-white hover:text-blue-900 px-10 py-4 rounded-full font-black text-lg transition">READ OUR IMPACT</button>
-            </div>
-        </div>
-    </header>
+  </div>
+</section><!-- WINGS --><section id="wings" class="py-20 bg-gray-100">
+  <div class="max-w-7xl mx-auto px-6">
+    <h3 class="text-3xl font-bold text-center text-blue-700 mb-12">Our Wings</h3><div class="grid md:grid-cols-2 gap-10">
+  <div class="bg-white p-8 rounded-2xl shadow-xl">
+    <h4 class="text-2xl font-bold text-blue-700 mb-4">Core ARYA UDAY</h4>
+    <ul class="space-y-2">
+      <li>• Free child education initiatives</li>
+      <li>• Sports promotion for youth</li>
+      <li>• Support for elderly in Vridh Ashrams</li>
+      <li>• Cultural works including temple construction</li>
+    </ul>
+  </div>
 
-    <section class="py-20 px-6 max-w-7xl mx-auto">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold text-blue-900 uppercase tracking-widest mb-4">Our Operations</h2>
-            <div class="inline-flex p-1 bg-blue-100 rounded-xl">
-                <button @click="activeWing = 'core'" :class="activeWing === 'core' ? 'bg-blue-700 text-white' : 'text-blue-700'" class="px-8 py-3 rounded-lg font-bold transition">ARYA UDAY CORE</button>
-                <button @click="activeWing = 'pnv'" :class="activeWing === 'pnv' ? 'bg-red-600 text-white' : 'text-red-600'" class="px-8 py-3 rounded-lg font-bold transition">PNV DEFENSE (प्र न व)</button>
-            </div>
-        </div>
+  <div class="gradient-blue text-white p-8 rounded-2xl shadow-xl">
+    <h4 class="text-2xl font-bold mb-4">PRATYANGIRA NARSIMHA VAHINI (प्र न व)</h4>
+    <p class="mb-4">Works in coordination with law enforcement to strengthen women's safety and prevent organized crime.</p>
+    <div class="grid grid-cols-2 gap-4 text-center">
+      <div class="glass p-4 rounded-xl">
+        <div class="text-2xl font-bold">33%</div>
+        <div class="text-sm">Reduction in Balaghat</div>
+      </div>
+      <div class="glass p-4 rounded-xl">
+        <div class="text-2xl font-bold">15%</div>
+        <div class="text-sm">Reduction in Jabalpur</div>
+      </div>
+    </div>
+  </div>
+</div>
 
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
-            <div x-show="activeWing === 'core'" x-transition>
-                <h3 class="text-4xl font-black text-blue-900 mb-6">Social & Cultural Wing</h3>
-                <ul class="space-y-4">
-                    <li class="flex items-start gap-4 p-4 bg-white shadow-sm rounded-lg border-l-4 border-blue-500">
-                        <span class="text-2xl">🎓</span>
-                        <div><strong>Free Child Education:</strong> Breaking the cycle of poverty through literacy.</div>
-                    </li>
-                    <li class="flex items-start gap-4 p-4 bg-white shadow-sm rounded-lg border-l-4 border-blue-500">
-                        <span class="text-2xl">👴</span>
-                        <div><strong>Vridh Ashrams:</strong> Dignity and care for our elderly community.</div>
-                    </li>
-                    <li class="flex items-start gap-4 p-4 bg-white shadow-sm rounded-lg border-l-4 border-blue-500">
-                        <span class="text-2xl">🛕</span>
-                        <div><strong>Cultural Works:</strong> Preservation through temple construction.</div>
-                    </li>
-                </ul>
-            </div>
+  </div>
+</section><!-- PROGRAMS --><section id="programs" class="py-20">
+  <div class="max-w-7xl mx-auto px-6">
+    <h3 class="text-3xl font-bold text-center text-blue-700 mb-12">Our Programs</h3><div class="grid md:grid-cols-3 gap-8">
+  <div class="p-6 bg-white rounded-2xl shadow-lg text-center">
+    <i class="fas fa-graduation-cap text-3xl text-blue-600 mb-3"></i>
+    <h4 class="font-semibold">Education Programs</h4>
+  </div>
+  <div class="p-6 bg-white rounded-2xl shadow-lg text-center">
+    <i class="fas fa-shield-halved text-3xl text-blue-600 mb-3"></i>
+    <h4 class="font-semibold">Women Safety</h4>
+  </div>
+  <div class="p-6 bg-white rounded-2xl shadow-lg text-center">
+    <i class="fas fa-heart text-3xl text-blue-600 mb-3"></i>
+    <h4 class="font-semibold">Elderly Care</h4>
+  </div>
+</div>
 
-            <div x-show="activeWing === 'pnv'" x-transition>
-                <h3 class="text-4xl font-black text-red-600 mb-6 uppercase tracking-tighter">Pratyangira Narsimha Vahini</h3>
-                <div class="grid grid-cols-2 gap-4 mb-6">
-                    <div class="bg-red-50 p-6 rounded-2xl border-b-4 border-red-600 text-center">
-                        <div class="text-3xl font-black text-red-600 mb-1">33%</div>
-                        <div class="text-xs font-bold uppercase">Rape Case Reduction (Balaghat)</div>
-                    </div>
-                    <div class="bg-red-50 p-6 rounded-2xl border-b-4 border-red-600 text-center">
-                        <div class="text-3xl font-black text-red-600 mb-1">15%</div>
-                        <div class="text-xs font-bold uppercase">Reduction (Jabalpur)</div>
-                    </div>
-                </div>
-                <p class="text-slate-700 font-bold mb-4">Tactical Operations & Gau-Raksha:</p>
-                <p class="bg-slate-900 text-slate-300 p-4 rounded-lg font-mono text-sm leading-relaxed border-l-4 border-red-600">
-                    Intercepting illegal cattle transport through coordinated police intelligence. Zero tolerance for lawlessness.
-                </p>
-            </div>
-
-            <div class="rounded-3xl overflow-hidden shadow-2xl">
-                <img :src="activeWing === 'core' ? 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80' : 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80'" class="w-full h-[400px] object-cover transition-all duration-500">
-            </div>
-        </div>
-    </section>
-
-    <section class="bg-blue-950 py-20 text-white">
-        <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
-            <div class="w-48 h-48 rounded-full border-4 border-blue-400 p-2 shrink-0">
-                <div class="w-full h-full bg-slate-800 rounded-full flex items-center justify-center text-xs text-slate-500 uppercase tracking-widest">Portrait</div>
-            </div>
-            <div>
-                <h2 class="text-3xl font-bold mb-2 uppercase">Yashvardhan Rai Shrivastav</h2>
-                <p class="text-blue-400 font-bold tracking-[0.3em] mb-6 uppercase text-sm italic">The Visionary Commander</p>
-                <p class="text-lg text-slate-300 leading-relaxed italic">
-                    "Championing a powerful movement for change, commanded by an unwavering commitment to both social compassion and the aggressive enforcement of safety and ethics."
-                </p>
-            </div>
-        </div>
-    </section>
-
-</body>
+  </div>
+</section><!-- DONATE --><section id="donate" class="gradient-blue text-white py-20">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <h3 class="text-3xl font-bold mb-6">Support the Mission</h3>
+    <p class="mb-8">Your contribution helps us expand education, safety and humanitarian programs.</p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <button class="bg-white text-blue-700 px-6 py-3 rounded-full font-semibold">₹501</button>
+      <button class="bg-white text-blue-700 px-6 py-3 rounded-full font-semibold">₹1100</button>
+      <button class="bg-white text-blue-700 px-6 py-3 rounded-full font-semibold">₹5000</button>
+      <button class="border border-white px-6 py-3 rounded-full font-semibold">Custom</button>
+    </div>
+  </div>
+</section><!-- CONTACT --><section id="contact" class="py-20">
+  <div class="max-w-4xl mx-auto px-6">
+    <h3 class="text-3xl font-bold text-center text-blue-700 mb-10">Contact Us</h3>
+    <form class="grid gap-4">
+      <input type="text" placeholder="Your Name" class="p-3 border rounded-lg" required>
+      <input type="email" placeholder="Email" class="p-3 border rounded-lg" required>
+      <input type="tel" placeholder="Phone" class="p-3 border rounded-lg" required>
+      <textarea placeholder="Message" class="p-3 border rounded-lg" rows="4" required></textarea>
+      <button class="gradient-blue text-white py-3 rounded-lg font-semibold">Send Message</button>
+    </form>
+  </div>
+</section><!-- FOOTER --><footer class="bg-gray-900 text-gray-300 py-10 text-center">
+  <p>© 2026 ARYA UDAY. All Rights Reserved.</p>
+</footer><script>
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+</script></body>
 </html>
