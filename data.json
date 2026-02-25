@@ -1,0 +1,42 @@
+{
+  "coreWings": [
+    {
+      "title": "Free Child Education",
+      "points": [
+        "Free study classes for underprivileged children",
+        "Support for students lacking digital access",
+        "Academic mentoring and foundational development"
+      ]
+    },
+    {
+      "title": "Sports Promotion",
+      "points": [
+        "Youth engagement through sports",
+        "Physical fitness and discipline development"
+      ]
+    },
+    {
+      "title": "Support for Elderly (Vridh Ashram)",
+      "points": [
+        "Assistance to senior citizens",
+        "Emotional and social support initiatives"
+      ]
+    },
+    {
+      "title": "Cultural & Temple Development",
+      "points": [
+        "Cultural preservation programs",
+        "Temple construction and restoration initiatives"
+      ]
+    }
+  ],
+  "stats": {
+    "balaghatCrimeReduction": 33,
+    "jabalpurCrimeReduction": 15
+  },
+  "impact": {
+    "educationPrograms": "Ongoing",
+    "lawCoordination": "Active",
+    "gauRaksha": "Field Operations"
+  }
+}
