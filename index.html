@@ -417,15 +417,9 @@
 
   <script src="script.js"></script>
  <script type="module">
-   console.log("Firebase script loaded");
-  // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   const firebaseConfig = {
     apiKey: "AIzaSyDbZ17nBpVdpCV99hVERnJg6tbNyBxS2P4",
     authDomain: "aryauday-d2309.firebaseapp.com",
@@ -437,9 +431,34 @@
     measurementId: "G-DTFPP0Y19Z"
   };
 
-  // Initialize Firebase
   const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+  const db = getFirestore(app);
+
+  // Volunteer Form Submit
+  const volunteerForm = document.getElementById("volunteerForm");
+
+  if(volunteerForm) {
+    volunteerForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const name = volunteerForm.name.value;
+      const email = volunteerForm.email.value;
+      const phone = volunteerForm.phone.value;
+      const skill = volunteerForm.skill.value;
+      const message = volunteerForm.message.value;
+
+      try {
+        await addDoc(collection(db, "volunteers"), {
+          name, email, phone, skill, message, timestamp: new Date()
+        });
+        alert("Registration Successful!");
+        volunteerForm.reset();
+      } catch (err) {
+        console.error("Error adding document: ", err);
+        alert("Failed to register. Please try again.");
+      }
+    });
+  }
 </script>
 </body>
 </html>
