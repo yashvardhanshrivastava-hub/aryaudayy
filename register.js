@@ -21,4 +21,12 @@
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
+//inputs
+const email = document.getElementbyId('email').value;
+const passward = document.getElementbyId('password').value;
+//submit button
+const submit = document.getElementbyId('submit').value;
+submit.addEventListener("click",function(event){
+  event.prevent.Default()
+    alert(5)
 </script>
